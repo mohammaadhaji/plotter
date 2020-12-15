@@ -1,0 +1,1443 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1581</width>
+    <height>955</height>
+   </rect>
+  </property>
+  <property name="font">
+   <font>
+    <pointsize>10</pointsize>
+   </font>
+  </property>
+  <property name="windowTitle">
+   <string>Plotter</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(31, 31, 31);</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(31, 31, 31);</string>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout_3">
+    <item>
+     <layout class="QVBoxLayout" name="MainVLayout" stretch="1,9">
+      <item>
+       <layout class="QHBoxLayout" name="TopHLayout" stretch="8">
+        <property name="leftMargin">
+         <number>0</number>
+        </property>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_3" stretch="1,4,5">
+          <property name="leftMargin">
+           <number>10</number>
+          </property>
+          <property name="rightMargin">
+           <number>10</number>
+          </property>
+          <item>
+           <layout class="QVBoxLayout" name="ConnMode_Layout">
+            <item>
+             <widget class="QGroupBox" name="grpBox_Mode">
+              <property name="styleSheet">
+               <string notr="true">background-color: rgb(31, 31, 31);
+font: 10pt &quot;Segoe UI&quot;;
+color: rgb(232, 232, 232);
+</string>
+              </property>
+              <property name="title">
+               <string>Connection Mode</string>
+              </property>
+              <layout class="QVBoxLayout" name="verticalLayout_4">
+               <item>
+                <widget class="QRadioButton" name="rdb_serial">
+                 <property name="text">
+                  <string>Serial</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QRadioButton" name="rdb_ethernet">
+                 <property name="text">
+                  <string>Ethernet</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QRadioButton" name="rdb_USB">
+                 <property name="text">
+                  <string>USB</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <spacer name="verticalSpacer">
+                 <property name="orientation">
+                  <enum>Qt::Vertical</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>20</width>
+                   <height>40</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item>
+                <widget class="QPushButton" name="btn_connection">
+                 <property name="styleSheet">
+                  <string notr="true">QPushButton {
+	background: #434343;
+	color: #fff;
+	padding: 7px;
+	border-radius: 5px;
+	margin: 0 10px 0 10px;
+}
+QPushButton:hover:!pressed{
+	background-color: rgb(115, 115, 115);
+}
+</string>
+                 </property>
+                 <property name="text">
+                  <string>Connect</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QVBoxLayout" name="ConnOptions_Layout">
+            <property name="topMargin">
+             <number>0</number>
+            </property>
+            <item>
+             <widget class="QGroupBox" name="groupBox_3">
+              <property name="styleSheet">
+               <string notr="true">background-color: rgb(31, 31, 31);
+font: 10pt &quot;Segoe UI&quot;;
+color: rgb(232, 232, 232);
+</string>
+              </property>
+              <property name="title">
+               <string>Connection Options</string>
+              </property>
+              <layout class="QVBoxLayout" name="verticalLayout_7">
+               <item>
+                <layout class="QVBoxLayout" name="verticalLayout_6">
+                 <item>
+                  <widget class="QTabWidget" name="tabWidget">
+                   <property name="enabled">
+                    <bool>true</bool>
+                   </property>
+                   <property name="font">
+                    <font>
+                     <family>Segoe UI</family>
+                     <pointsize>10</pointsize>
+                    </font>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">color: rgb(0, 0, 0);
+</string>
+                   </property>
+                   <property name="currentIndex">
+                    <number>0</number>
+                   </property>
+                   <property name="tabsClosable">
+                    <bool>false</bool>
+                   </property>
+                   <property name="movable">
+                    <bool>false</bool>
+                   </property>
+                   <widget class="QWidget" name="tab_serial">
+                    <attribute name="title">
+                     <string>Serial</string>
+                    </attribute>
+                    <layout class="QGridLayout" name="gridLayout_6">
+                     <item row="0" column="0">
+                      <layout class="QGridLayout" name="gridLayout_13" rowstretch="0,0,0" columnstretch="0,0,0,0,0,0,0,0,0,0">
+                       <property name="leftMargin">
+                        <number>0</number>
+                       </property>
+                       <property name="topMargin">
+                        <number>0</number>
+                       </property>
+                       <property name="rightMargin">
+                        <number>0</number>
+                       </property>
+                       <property name="verticalSpacing">
+                        <number>7</number>
+                       </property>
+                       <item row="2" column="5">
+                        <widget class="QComboBox" name="comb_flowControl">
+                         <property name="font">
+                          <font>
+                           <family>Segoe UI</family>
+                           <pointsize>10</pointsize>
+                          </font>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">background: #434343;
+color: #fff;
+border-top-left-radius:10px;
+padding:5px;</string>
+                         </property>
+                         <item>
+                          <property name="text">
+                           <string>None</string>
+                          </property>
+                         </item>
+                         <item>
+                          <property name="text">
+                           <string>Xon/Xoff</string>
+                          </property>
+                         </item>
+                         <item>
+                          <property name="text">
+                           <string>RTS/CTS</string>
+                          </property>
+                         </item>
+                         <item>
+                          <property name="text">
+                           <string>DSR/DTR</string>
+                          </property>
+                         </item>
+                        </widget>
+                       </item>
+                       <item row="1" column="7">
+                        <widget class="QLabel" name="lbl_wTimeout">
+                         <property name="font">
+                          <font>
+                           <family>Segoe UI</family>
+                           <pointsize>10</pointsize>
+                          </font>
+                         </property>
+                         <property name="toolTip">
+                          <string/>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">color: rgb(255, 255, 255);</string>
+                         </property>
+                         <property name="text">
+                          <string>W-timeout</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="1" column="5">
+                        <widget class="QComboBox" name="comb_parity">
+                         <property name="font">
+                          <font>
+                           <family>Segoe UI</family>
+                           <pointsize>10</pointsize>
+                          </font>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">background: #434343;
+color: #fff;
+border-top-left-radius:10px;
+padding:5px;</string>
+                         </property>
+                         <item>
+                          <property name="text">
+                           <string>None</string>
+                          </property>
+                         </item>
+                         <item>
+                          <property name="text">
+                           <string>Odd</string>
+                          </property>
+                         </item>
+                         <item>
+                          <property name="text">
+                           <string>Even</string>
+                          </property>
+                         </item>
+                         <item>
+                          <property name="text">
+                           <string>Mark</string>
+                          </property>
+                         </item>
+                         <item>
+                          <property name="text">
+                           <string>Space</string>
+                          </property>
+                         </item>
+                        </widget>
+                       </item>
+                       <item row="0" column="7">
+                        <widget class="QLabel" name="lbl_rTimeout">
+                         <property name="font">
+                          <font>
+                           <family>Segoe UI</family>
+                           <pointsize>10</pointsize>
+                          </font>
+                         </property>
+                         <property name="toolTip">
+                          <string/>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">color: rgb(255, 255, 255);</string>
+                         </property>
+                         <property name="text">
+                          <string>R-timeout</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="1" column="0">
+                        <spacer name="horizontalSpacer_8">
+                         <property name="font">
+                          <font>
+                           <family>Segoe UI</family>
+                           <pointsize>10</pointsize>
+                          </font>
+                         </property>
+                         <property name="orientation">
+                          <enum>Qt::Horizontal</enum>
+                         </property>
+                         <property name="sizeHint" stdset="0">
+                          <size>
+                           <width>40</width>
+                           <height>20</height>
+                          </size>
+                         </property>
+                        </spacer>
+                       </item>
+                       <item row="2" column="1">
+                        <widget class="QLabel" name="lbl_byteSize">
+                         <property name="font">
+                          <font>
+                           <family>Segoe UI</family>
+                           <pointsize>10</pointsize>
+                          </font>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">color: rgb(255, 255, 255);</string>
+                         </property>
+                         <property name="text">
+                          <string>Byte Size</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="1" column="3">
+                        <spacer name="horizontalSpacer_9">
+                         <property name="font">
+                          <font>
+                           <family>Segoe UI</family>
+                           <pointsize>10</pointsize>
+                          </font>
+                         </property>
+                         <property name="orientation">
+                          <enum>Qt::Horizontal</enum>
+                         </property>
+                         <property name="sizeHint" stdset="0">
+                          <size>
+                           <width>40</width>
+                           <height>20</height>
+                          </size>
+                         </property>
+                        </spacer>
+                       </item>
+                       <item row="1" column="1">
+                        <widget class="QLabel" name="lbl_baudrate">
+                         <property name="font">
+                          <font>
+                           <family>Segoe UI</family>
+                           <pointsize>10</pointsize>
+                          </font>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">color: rgb(255, 255, 255);</string>
+                         </property>
+                         <property name="text">
+                          <string>Buadrate</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="0" column="8">
+                        <widget class="QLineEdit" name="txb_rTimeout">
+                         <property name="font">
+                          <font>
+                           <family>Segoe UI</family>
+                           <pointsize>10</pointsize>
+                          </font>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">QLineEdit{
+	background: #434343;
+	color: #fff;
+	border-radius:10px;
+	padding:5px;
+}
+QLineEdit:focus{
+  	background-color: rgb(115, 115, 115);
+}</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="0" column="5">
+                        <widget class="QComboBox" name="comb_stopBits">
+                         <property name="font">
+                          <font>
+                           <family>Segoe UI</family>
+                           <pointsize>10</pointsize>
+                          </font>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">background: #434343;
+color: #fff;
+border-top-left-radius:10px;
+padding:5px;</string>
+                         </property>
+                         <item>
+                          <property name="text">
+                           <string>1</string>
+                          </property>
+                         </item>
+                         <item>
+                          <property name="text">
+                           <string>1.5</string>
+                          </property>
+                         </item>
+                         <item>
+                          <property name="text">
+                           <string>2</string>
+                          </property>
+                         </item>
+                        </widget>
+                       </item>
+                       <item row="1" column="9">
+                        <spacer name="horizontalSpacer_12">
+                         <property name="font">
+                          <font>
+                           <family>Segoe UI</family>
+                           <pointsize>10</pointsize>
+                          </font>
+                         </property>
+                         <property name="orientation">
+                          <enum>Qt::Horizontal</enum>
+                         </property>
+                         <property name="sizeHint" stdset="0">
+                          <size>
+                           <width>40</width>
+                           <height>20</height>
+                          </size>
+                         </property>
+                        </spacer>
+                       </item>
+                       <item row="0" column="4">
+                        <widget class="QLabel" name="lbl_stopBits">
+                         <property name="font">
+                          <font>
+                           <family>Segoe UI</family>
+                           <pointsize>10</pointsize>
+                          </font>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">color: rgb(255, 255, 255);</string>
+                         </property>
+                         <property name="text">
+                          <string>Stop Bits</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="0" column="2">
+                        <widget class="ComboBox" name="comb_sPort">
+                         <property name="font">
+                          <font>
+                           <family>Segoe UI</family>
+                           <pointsize>10</pointsize>
+                          </font>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">background: #434343;
+color: #fff;
+border-top-left-radius:10px;
+padding:5px;</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="0" column="1">
+                        <widget class="QLabel" name="lbl_sPort">
+                         <property name="font">
+                          <font>
+                           <family>Segoe UI</family>
+                           <pointsize>10</pointsize>
+                          </font>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">color: rgb(255, 255, 255);</string>
+                         </property>
+                         <property name="text">
+                          <string>Port</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="2" column="4">
+                        <widget class="QLabel" name="lbl_flowControl">
+                         <property name="font">
+                          <font>
+                           <family>Segoe UI</family>
+                           <pointsize>10</pointsize>
+                          </font>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">color: rgb(255, 255, 255);</string>
+                         </property>
+                         <property name="text">
+                          <string>Flow Control</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="2" column="7">
+                        <widget class="QLabel" name="lbl_ibTimeout">
+                         <property name="font">
+                          <font>
+                           <family>Segoe UI</family>
+                           <pointsize>10</pointsize>
+                          </font>
+                         </property>
+                         <property name="toolTip">
+                          <string/>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">color: rgb(255, 255, 255);</string>
+                         </property>
+                         <property name="text">
+                          <string>IB-timeout</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="2" column="2">
+                        <widget class="QComboBox" name="comb_byteSize">
+                         <property name="font">
+                          <font>
+                           <family>Segoe UI</family>
+                           <pointsize>10</pointsize>
+                          </font>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">background: #434343;
+color: #fff;
+border-top-left-radius:10px;
+padding:5px;</string>
+                         </property>
+                         <item>
+                          <property name="text">
+                           <string>8</string>
+                          </property>
+                         </item>
+                         <item>
+                          <property name="text">
+                           <string>7</string>
+                          </property>
+                         </item>
+                         <item>
+                          <property name="text">
+                           <string>6</string>
+                          </property>
+                         </item>
+                         <item>
+                          <property name="text">
+                           <string>5</string>
+                          </property>
+                         </item>
+                        </widget>
+                       </item>
+                       <item row="1" column="4">
+                        <widget class="QLabel" name="lbl_parity">
+                         <property name="font">
+                          <font>
+                           <family>Segoe UI</family>
+                           <pointsize>10</pointsize>
+                          </font>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">color: rgb(255, 255, 255);</string>
+                         </property>
+                         <property name="text">
+                          <string>Parity</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="1" column="2">
+                        <widget class="QComboBox" name="comb_baudrate">
+                         <property name="font">
+                          <font>
+                           <family>Segoe UI</family>
+                           <pointsize>10</pointsize>
+                          </font>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">background: #434343;
+color: #fff;
+border-top-left-radius:10px;
+padding:5px;</string>
+                         </property>
+                         <item>
+                          <property name="text">
+                           <string>9600</string>
+                          </property>
+                         </item>
+                         <item>
+                          <property name="text">
+                           <string>14400</string>
+                          </property>
+                         </item>
+                         <item>
+                          <property name="text">
+                           <string>19200</string>
+                          </property>
+                         </item>
+                         <item>
+                          <property name="text">
+                           <string>38400</string>
+                          </property>
+                         </item>
+                         <item>
+                          <property name="text">
+                           <string>57600</string>
+                          </property>
+                         </item>
+                         <item>
+                          <property name="text">
+                           <string>115200</string>
+                          </property>
+                         </item>
+                         <item>
+                          <property name="text">
+                           <string>230400</string>
+                          </property>
+                         </item>
+                         <item>
+                          <property name="text">
+                           <string>460800</string>
+                          </property>
+                         </item>
+                         <item>
+                          <property name="text">
+                           <string>500000</string>
+                          </property>
+                         </item>
+                         <item>
+                          <property name="text">
+                           <string>1000000</string>
+                          </property>
+                         </item>
+                         <item>
+                          <property name="text">
+                           <string>2000000</string>
+                          </property>
+                         </item>
+                         <item>
+                          <property name="text">
+                           <string>3000000</string>
+                          </property>
+                         </item>
+                         <item>
+                          <property name="text">
+                           <string>4000000</string>
+                          </property>
+                         </item>
+                        </widget>
+                       </item>
+                       <item row="2" column="8">
+                        <widget class="QLineEdit" name="txb_ibTimeout">
+                         <property name="font">
+                          <font>
+                           <family>Segoe UI</family>
+                           <pointsize>10</pointsize>
+                          </font>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">QLineEdit{
+	background: #434343;
+	color: #fff;
+	border-radius:10px;
+	padding:5px;
+}
+QLineEdit:focus{
+  	background-color: rgb(115, 115, 115);
+}</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="1" column="6">
+                        <spacer name="horizontalSpacer_13">
+                         <property name="font">
+                          <font>
+                           <family>Segoe UI</family>
+                           <pointsize>10</pointsize>
+                          </font>
+                         </property>
+                         <property name="orientation">
+                          <enum>Qt::Horizontal</enum>
+                         </property>
+                         <property name="sizeHint" stdset="0">
+                          <size>
+                           <width>40</width>
+                           <height>20</height>
+                          </size>
+                         </property>
+                        </spacer>
+                       </item>
+                       <item row="1" column="8">
+                        <widget class="QLineEdit" name="txb_wTimeout">
+                         <property name="font">
+                          <font>
+                           <family>Segoe UI</family>
+                           <pointsize>10</pointsize>
+                          </font>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">QLineEdit{
+	background: #434343;
+	color: #fff;
+	border-radius:10px;
+	padding:5px;
+}
+QLineEdit:focus{
+  	background-color: rgb(115, 115, 115);
+}</string>
+                         </property>
+                        </widget>
+                       </item>
+                      </layout>
+                     </item>
+                    </layout>
+                   </widget>
+                   <widget class="QWidget" name="tab_ethernet">
+                    <attribute name="title">
+                     <string>Ethernet</string>
+                    </attribute>
+                   </widget>
+                   <widget class="QWidget" name="tab_usb">
+                    <attribute name="title">
+                     <string>USB</string>
+                    </attribute>
+                   </widget>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+              </layout>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QVBoxLayout" name="WriteV_Layout">
+            <item>
+             <widget class="QGroupBox" name="groupBox_2">
+              <property name="styleSheet">
+               <string notr="true">background-color: rgb(31, 31, 31);
+font: 10pt &quot;Segoe UI&quot;;
+color: rgb(232, 232, 232);
+</string>
+              </property>
+              <property name="title">
+               <string>Read and Write</string>
+              </property>
+              <layout class="QHBoxLayout" name="horizontalLayout_2">
+               <item>
+                <layout class="QHBoxLayout" name="horizontalLayout" stretch="5,5">
+                 <item>
+                  <layout class="QVBoxLayout" name="verticalLayout_2">
+                   <property name="bottomMargin">
+                    <number>0</number>
+                   </property>
+                   <item>
+                    <layout class="QGridLayout" name="gridLayout" columnstretch="1,2,2,2">
+                     <item row="0" column="0">
+                      <widget class="QLabel" name="lbl_header">
+                       <property name="text">
+                        <string>Header</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="0" column="1">
+                      <widget class="QLineEdit" name="txb_header">
+                       <property name="styleSheet">
+                        <string notr="true">QLineEdit{
+	background: #434343;
+	color: #fff;
+	border-radius:10px;
+	padding:5px;
+}
+QLineEdit:focus{
+  	background-color: rgb(115, 115, 115);
+}</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="1" column="0">
+                      <widget class="QLabel" name="lbl_footer">
+                       <property name="text">
+                        <string>Footer</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="1" column="1">
+                      <widget class="QLineEdit" name="txb_footer">
+                       <property name="styleSheet">
+                        <string notr="true">QLineEdit{
+	background: #434343;
+	color: #fff;
+	border-radius:10px;
+	padding:5px;
+}
+QLineEdit:focus{
+  	background-color: rgb(115, 115, 115);
+}</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="2" column="0">
+                      <widget class="QLabel" name="lbl_data">
+                       <property name="text">
+                        <string>Data</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="2" column="1">
+                      <widget class="QLineEdit" name="txb_data">
+                       <property name="styleSheet">
+                        <string notr="true">QLineEdit{
+	background: #434343;
+	color: #fff;
+	border-radius:10px;
+	padding:5px;
+}
+QLineEdit:focus{
+  	background-color: rgb(115, 115, 115);
+}</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="2" column="2">
+                      <widget class="QPushButton" name="btn_send">
+                       <property name="styleSheet">
+                        <string notr="true">QPushButton {
+	background: #434343;
+	color: #fff;
+	padding: 7px;
+	border-radius: 5px;
+}
+QPushButton:hover:!pressed{
+	background-color: rgb(115, 115, 115);
+}
+</string>
+                       </property>
+                       <property name="text">
+                        <string>Send</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="2" column="3">
+                      <spacer name="horizontalSpacer_5">
+                       <property name="orientation">
+                        <enum>Qt::Horizontal</enum>
+                       </property>
+                       <property name="sizeHint" stdset="0">
+                        <size>
+                         <width>40</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                      </spacer>
+                     </item>
+                    </layout>
+                   </item>
+                   <item>
+                    <layout class="QHBoxLayout" name="horizontalLayout_10">
+                     <item>
+                      <widget class="QLabel" name="lbl_packet">
+                       <property name="text">
+                        <string>Packet to Send :</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <spacer name="horizontalSpacer_3">
+                       <property name="orientation">
+                        <enum>Qt::Horizontal</enum>
+                       </property>
+                       <property name="sizeHint" stdset="0">
+                        <size>
+                         <width>40</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                      </spacer>
+                     </item>
+                    </layout>
+                   </item>
+                  </layout>
+                 </item>
+                 <item>
+                  <layout class="QVBoxLayout" name="verticalLayout_8">
+                   <item>
+                    <widget class="QCheckBox" name="chBox_show_data">
+                     <property name="text">
+                      <string>Show Sent and Received Data</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QPlainTextEdit" name="ptxtEdit_log">
+                     <property name="styleSheet">
+                      <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(13, 13, 13);
+border:3px solid rgb(165, 165, 165);
+border-top-left-radius:10px;
+border-top-right-radius:10px;
+</string>
+                     </property>
+                     <property name="readOnly">
+                      <bool>true</bool>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </item>
+                </layout>
+               </item>
+              </layout>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QVBoxLayout" name="BottonVLayout">
+        <item>
+         <layout class="QHBoxLayout" name="TopHL_Figure" stretch="1">
+          <property name="leftMargin">
+           <number>10</number>
+          </property>
+          <property name="rightMargin">
+           <number>10</number>
+          </property>
+          <item>
+           <widget class="QGroupBox" name="groupBox">
+            <property name="styleSheet">
+             <string notr="true">color: rgb(232, 232, 232);
+font: 10pt &quot;Segoe UI&quot;;
+background-color: rgb(31, 31, 31);</string>
+            </property>
+            <property name="title">
+             <string>Plot</string>
+            </property>
+            <layout class="QGridLayout" name="gridLayout_10" columnstretch="1,10">
+             <item row="0" column="0">
+              <layout class="QVBoxLayout" name="verticalLayout">
+               <property name="bottomMargin">
+                <number>0</number>
+               </property>
+               <item>
+                <widget class="QLabel" name="lbl_channels">
+                 <property name="text">
+                  <string>Channels</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QComboBox" name="comb_channels">
+                 <property name="styleSheet">
+                  <string notr="true">background: #434343;
+color: #fff;
+border-top-left-radius:10px;
+padding:5px;</string>
+                 </property>
+                 <item>
+                  <property name="text">
+                   <string>1</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>2</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>3</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>4</string>
+                  </property>
+                 </item>
+                </widget>
+               </item>
+               <item>
+                <layout class="QGridLayout" name="gridLayout_2">
+                 <item row="0" column="0">
+                  <widget class="QLabel" name="lbl_bch1">
+                   <property name="font">
+                    <font>
+                     <family>Segoe UI</family>
+                     <pointsize>10</pointsize>
+                    </font>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">color: rgb(0, 0, 0);
+background-color: rgb(0, 0, 255);
+border-radius: 5px;</string>
+                   </property>
+                   <property name="text">
+                    <string> CH1 </string>
+                   </property>
+                   <property name="alignment">
+                    <set>Qt::AlignCenter</set>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="1" column="0">
+                  <widget class="QLabel" name="lbl_bch3">
+                   <property name="font">
+                    <font>
+                     <family>Segoe UI</family>
+                     <pointsize>10</pointsize>
+                    </font>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">color: rgb(0, 0, 0);
+border-radius: 5px;
+background-color: rgb(0, 255, 0);</string>
+                   </property>
+                   <property name="text">
+                    <string> CH3 </string>
+                   </property>
+                   <property name="alignment">
+                    <set>Qt::AlignCenter</set>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="0" column="1">
+                  <widget class="QLabel" name="lbl_bch2">
+                   <property name="font">
+                    <font>
+                     <family>Segoe UI</family>
+                     <pointsize>10</pointsize>
+                    </font>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">color: rgb(0, 0, 0);
+background-color: rgb(255, 0, 0);
+border-radius: 5px;</string>
+                   </property>
+                   <property name="text">
+                    <string> CH2 </string>
+                   </property>
+                   <property name="alignment">
+                    <set>Qt::AlignCenter</set>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="1" column="1">
+                  <widget class="QLabel" name="lbl_bch4">
+                   <property name="font">
+                    <font>
+                     <family>Segoe UI</family>
+                     <pointsize>10</pointsize>
+                    </font>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">color: rgb(0, 0, 0);
+background-color: rgb(255, 255, 255);
+border-radius: 5px;</string>
+                   </property>
+                   <property name="text">
+                    <string> CH4 </string>
+                   </property>
+                   <property name="alignment">
+                    <set>Qt::AlignCenter</set>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+               <item>
+                <widget class="QLabel" name="lbl_points">
+                 <property name="text">
+                  <string>Points</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QSpinBox" name="spinBox_points">
+                 <property name="styleSheet">
+                  <string notr="true">background: #434343;
+color: #fff;
+border-top-left-radius:10px;
+padding:5px;</string>
+                 </property>
+                 <property name="minimum">
+                  <number>50</number>
+                 </property>
+                 <property name="maximum">
+                  <number>2000</number>
+                 </property>
+                 <property name="singleStep">
+                  <number>10</number>
+                 </property>
+                 <property name="value">
+                  <number>1000</number>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <layout class="QVBoxLayout" name="verticalLayout_11">
+                 <property name="bottomMargin">
+                  <number>0</number>
+                 </property>
+                 <item>
+                  <widget class="QGroupBox" name="groupBox_4">
+                   <property name="title">
+                    <string>Y - INC / DEC</string>
+                   </property>
+                   <layout class="QVBoxLayout" name="verticalLayout_13">
+                    <property name="bottomMargin">
+                     <number>11</number>
+                    </property>
+                    <item>
+                     <layout class="QVBoxLayout" name="verticalLayout_12" stretch="0,0,0,0,0">
+                      <property name="bottomMargin">
+                       <number>0</number>
+                      </property>
+                      <item>
+                       <layout class="QHBoxLayout" name="horizontalLayout_5">
+                        <item>
+                         <widget class="QLabel" name="lbl_ch1">
+                          <property name="text">
+                           <string>CH1</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
+                         <widget class="QDial" name="dial_ch1">
+                          <property name="maximumSize">
+                           <size>
+                            <width>16000000</width>
+                            <height>16000000</height>
+                           </size>
+                          </property>
+                          <property name="styleSheet">
+                           <string notr="true">background-color: rgb(0, 0, 255);</string>
+                          </property>
+                          <property name="minimum">
+                           <number>-50</number>
+                          </property>
+                          <property name="maximum">
+                           <number>50</number>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
+                         <widget class="QLabel" name="lbl_ch1_y">
+                          <property name="text">
+                           <string>0</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
+                         <spacer name="horizontalSpacer_2">
+                          <property name="orientation">
+                           <enum>Qt::Horizontal</enum>
+                          </property>
+                          <property name="sizeHint" stdset="0">
+                           <size>
+                            <width>40</width>
+                            <height>20</height>
+                           </size>
+                          </property>
+                         </spacer>
+                        </item>
+                       </layout>
+                      </item>
+                      <item>
+                       <layout class="QHBoxLayout" name="horizontalLayout_6">
+                        <item>
+                         <widget class="QLabel" name="lbl_ch2">
+                          <property name="text">
+                           <string>CH2</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
+                         <widget class="QDial" name="dial_ch2">
+                          <property name="styleSheet">
+                           <string notr="true">background-color: rgb(255, 0, 0);</string>
+                          </property>
+                          <property name="minimum">
+                           <number>-50</number>
+                          </property>
+                          <property name="maximum">
+                           <number>50</number>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
+                         <widget class="QLabel" name="lbl_ch2_y">
+                          <property name="text">
+                           <string>0</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
+                         <spacer name="horizontalSpacer_4">
+                          <property name="orientation">
+                           <enum>Qt::Horizontal</enum>
+                          </property>
+                          <property name="sizeHint" stdset="0">
+                           <size>
+                            <width>40</width>
+                            <height>20</height>
+                           </size>
+                          </property>
+                         </spacer>
+                        </item>
+                       </layout>
+                      </item>
+                      <item>
+                       <layout class="QHBoxLayout" name="horizontalLayout_7">
+                        <item>
+                         <widget class="QLabel" name="lbl_y_inc_dec">
+                          <property name="text">
+                           <string>CH3</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
+                         <widget class="QDial" name="dial_ch3">
+                          <property name="styleSheet">
+                           <string notr="true">background-color: rgb(0, 255, 0);</string>
+                          </property>
+                          <property name="minimum">
+                           <number>-50</number>
+                          </property>
+                          <property name="maximum">
+                           <number>50</number>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
+                         <widget class="QLabel" name="lbl_ch3_y">
+                          <property name="text">
+                           <string>0</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
+                         <spacer name="horizontalSpacer_10">
+                          <property name="orientation">
+                           <enum>Qt::Horizontal</enum>
+                          </property>
+                          <property name="sizeHint" stdset="0">
+                           <size>
+                            <width>40</width>
+                            <height>20</height>
+                           </size>
+                          </property>
+                         </spacer>
+                        </item>
+                       </layout>
+                      </item>
+                      <item>
+                       <layout class="QHBoxLayout" name="horizontalLayout_8">
+                        <item>
+                         <widget class="QLabel" name="lbl_ch4">
+                          <property name="text">
+                           <string>CH4</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
+                         <widget class="QDial" name="dial_ch4">
+                          <property name="styleSheet">
+                           <string notr="true">background-color: rgb(255, 255, 255);</string>
+                          </property>
+                          <property name="minimum">
+                           <number>-50</number>
+                          </property>
+                          <property name="maximum">
+                           <number>50</number>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
+                         <widget class="QLabel" name="lbl_ch4_y">
+                          <property name="text">
+                           <string>0</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
+                         <spacer name="horizontalSpacer_6">
+                          <property name="orientation">
+                           <enum>Qt::Horizontal</enum>
+                          </property>
+                          <property name="sizeHint" stdset="0">
+                           <size>
+                            <width>40</width>
+                            <height>20</height>
+                           </size>
+                          </property>
+                         </spacer>
+                        </item>
+                       </layout>
+                      </item>
+                      <item>
+                       <layout class="QHBoxLayout" name="horizontalLayout_9">
+                        <item>
+                         <spacer name="horizontalSpacer">
+                          <property name="orientation">
+                           <enum>Qt::Horizontal</enum>
+                          </property>
+                          <property name="sizeHint" stdset="0">
+                           <size>
+                            <width>40</width>
+                            <height>20</height>
+                           </size>
+                          </property>
+                         </spacer>
+                        </item>
+                        <item>
+                         <widget class="QPushButton" name="btn_reset_y">
+                          <property name="styleSheet">
+                           <string notr="true">
+QPushButton {
+	background: #434343;
+	color: #fff;
+	border-radius: 5px;
+	padding:7px 15px 7px 15px;
+
+}
+QPushButton:hover:!pressed{
+	background-color: rgb(115, 115, 115);
+}
+</string>
+                          </property>
+                          <property name="text">
+                           <string>reset</string>
+                          </property>
+                         </widget>
+                        </item>
+                       </layout>
+                      </item>
+                     </layout>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+               <item>
+                <spacer name="verticalSpacer_4">
+                 <property name="orientation">
+                  <enum>Qt::Vertical</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>20</width>
+                   <height>40</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item>
+                <layout class="QHBoxLayout" name="horizontalLayout_11">
+                 <item>
+                  <widget class="QPushButton" name="btn_clear_plot">
+                   <property name="font">
+                    <font>
+                     <family>Segoe UI</family>
+                     <pointsize>10</pointsize>
+                    </font>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">
+QPushButton {
+	background: #434343;
+	color: #fff;
+	border-radius: 5px;
+	padding:7px 15px 7px 15px;
+
+}
+QPushButton:hover:!pressed{
+	background-color: rgb(115, 115, 115);
+}
+</string>
+                   </property>
+                   <property name="text">
+                    <string>Clear Plot</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+              </layout>
+             </item>
+             <item row="0" column="1">
+              <layout class="QVBoxLayout" name="verticalLayout_5">
+               <item>
+                <widget class="PlotWidget" name="graphWidget" native="true">
+                 <property name="styleSheet">
+                  <string notr="true"/>
+                 </property>
+                 <layout class="QGridLayout" name="gridLayout_7"/>
+                </widget>
+               </item>
+              </layout>
+             </item>
+            </layout>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1581</width>
+     <height>26</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>PlotWidget</class>
+   <extends>QWidget</extends>
+   <header>pyqtgraph</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>ComboBox</class>
+   <extends>QComboBox</extends>
+   <header>combobox</header>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>
