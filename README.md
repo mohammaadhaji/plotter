@@ -22,12 +22,8 @@ Install python, clone the repository and run the following commands in windows c
 
 ```
 $ pip install virtualenv
-
 $ virtualenv plotter_venv
-
 $ .\plotter_venv\Scripts\activate
-
 $ pip install -r requirement.txt
-
 $ python plotter.py
 ```
