@@ -83,7 +83,6 @@ class MainWindow(QMainWindow):
         self.txb_footer.textChanged.connect(self.set_packet_label)
         self.txb_data.textChanged.connect(self.set_packet_label)
         self.btn_send.clicked.connect(self.send)
-
     def send(self):
         packet = self.set_packet_label().encode('utf-8')
         self.ser_thread.write(packet)

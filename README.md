@@ -3,6 +3,7 @@
 
 Send data via serial port, ethernet and usb.
 
+![](image.png)
 
 **How to send data:**
 
