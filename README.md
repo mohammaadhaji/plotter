@@ -4,18 +4,29 @@
 Send data via serial port, ethernet and usb.
 
 
-**How to send data**
+**How to send data:**
 
-`print(f'{data1} {data2} {data3} {data4}')`
+In order to plot data correctly, send data space separated and add a newline character (\n) at the end.
+
+for example:
+```python
+data = '52.8 70 21 100\n'
+serial.write(data.encode())
+```
 
 
-**How to run**
+**How to run:**
 
-`$ python -m venv plotter_venv`
+Install python, clone the repository and run the following commands in windows cmd:
 
-`$ .\plotter_venv\Scripts\activate`
+```
+$ pip install virtualenv
 
-`$ pip install -r requirement.txt`
+$ virtualenv plotter_venv
 
-`$ python plotter.py`
+$ .\plotter_venv\Scripts\activate
 
+$ pip install -r requirement.txt
+
+$ python plotter.py
+```
