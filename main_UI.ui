@@ -1388,19 +1388,21 @@ QPushButton:hover:!pressed{
                  </item>
                 </layout>
                </item>
-              </layout>
-             </item>
-             <item row="0" column="1">
-              <layout class="QVBoxLayout" name="verticalLayout_5">
                <item>
-                <widget class="PlotWidget" name="graphWidget" native="true">
-                 <property name="styleSheet">
-                  <string notr="true"/>
+                <widget class="QLabel" name="lbl_coordinate">
+                 <property name="text">
+                  <string>X = 0.00
+Y = 0.00</string>
                  </property>
-                 <layout class="QGridLayout" name="gridLayout_7"/>
+                 <property name="alignment">
+                  <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                 </property>
                 </widget>
                </item>
               </layout>
+             </item>
+             <item row="0" column="1">
+              <layout class="QVBoxLayout" name="verticalLayout_5"/>
              </item>
             </layout>
            </widget>
@@ -1426,12 +1428,6 @@ QPushButton:hover:!pressed{
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <customwidgets>
-  <customwidget>
-   <class>PlotWidget</class>
-   <extends>QWidget</extends>
-   <header>pyqtgraph</header>
-   <container>1</container>
-  </customwidget>
   <customwidget>
    <class>ComboBox</class>
    <extends>QComboBox</extends>

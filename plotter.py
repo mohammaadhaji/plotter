@@ -56,12 +56,17 @@ class MainWindow(QMainWindow):
                       'line3': [], 'line4': []}
         self.x = []
         self.count = 0
+        self.graphWidget = pg.PlotWidget()
+        self.verticalLayout_5.addWidget(self.graphWidget)
+        self.setMouseTracking(True)
+        self.graphWidget.scene().sigMouseMoved.connect(self.onMouseMoved)
         self.graphWidget.showGrid(x=True, y=True)
         self.graphWidget.setMouseEnabled(x=True,y=False)  
-        self.line0 =  self.graphWidget.plot(self.x, self.lines['line0'], pen='b')
-        self.line1 =  self.graphWidget.plot(self.x, self.lines['line1'], pen='r')
-        self.line2 =  self.graphWidget.plot(self.x, self.lines['line2'], pen='g')
-        self.line3 =  self.graphWidget.plot(self.x, self.lines['line3'], pen='w')
+        self.line0 = self.graphWidget.plot(self.x, self.lines['line0'], pen='b')
+        self.line1 = self.graphWidget.plot(self.x, self.lines['line1'], pen='r')
+        self.line2 = self.graphWidget.plot(self.x, self.lines['line2'], pen='g')
+        self.line3 = self.graphWidget.plot(self.x, self.lines['line3'], pen='w')
+        
         #-----------------------------------Plot Settings---------------------------------
         self.dial_ch1.valueChanged.connect(self.set_ch0_y)
         self.dial_ch2.valueChanged.connect(self.set_ch1_y)
@@ -83,6 +88,13 @@ class MainWindow(QMainWindow):
         self.txb_footer.textChanged.connect(self.set_packet_label)
         self.txb_data.textChanged.connect(self.set_packet_label)
         self.btn_send.clicked.connect(self.send)
+
+
+    def onMouseMoved(self, evt):        
+        point =self.graphWidget.plotItem.vb.mapSceneToView(evt)
+        self.lbl_coordinate.setText(f"X = {round(point.x(), 2)}\nY = {round(point.y(), 2)}")
+        
+        
     def send(self):
         packet = self.set_packet_label().encode('utf-8')
         self.ser_thread.write(packet)
