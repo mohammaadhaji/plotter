@@ -13,6 +13,8 @@ Send data via serial port, ethernet and usb.
 
 `$ python -m venv plotter_venv`
 
+`.\plotter_venv\Scripts\activate`
+
 `$ pip install -r requirement.txt`
 
 `$ python plotter.py`
