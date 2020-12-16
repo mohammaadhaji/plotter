@@ -49,9 +49,7 @@ class MainWindow(QMainWindow):
 
         #-------------------------------------Shortcuts-----------------------------------
         self.auto_range_shortcut = QShortcut(QKeySequence("Ctrl+A"), self)
-        self.btn_connection_shortcut = QShortcut(QKeySequence("Ctrl+C"), self)
         self.auto_range_shortcut.activated.connect(self.auto_range)
-        self.btn_connection.setShortcut('Ctrl+C')
 
         #--------------------------------Plot Initialization------------------------------
         self.lines = {'line0': [], 'line1': [], 'line2': [],
@@ -126,9 +124,6 @@ class MainWindow(QMainWindow):
         msg.setText('This section will be available in future versions.')
         msg.exec_()
         self.rdb_serial.setChecked(True)
-
-    def press_btn_conn(self):
-        self.btn_connection.clicked()
 
     def set_channels(self):
         try:
