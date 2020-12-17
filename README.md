@@ -1,7 +1,7 @@
 # plotter
 **Dispaly real time data using pyqtgraph**
 
-Send data via serial port, ethernet and usb.
+Send data via serial port.
 
 ![](image.png)
 
