@@ -33,7 +33,7 @@ class SerialThread(QThread):
             self.ser_conn = True
 
             while self.ser_conn: 
-                s = [float(i) for i in re.findall('[\d.]+', str(self.ser.readline()))]
+                s = [float(i) for i in re.findall('[-\d.]+', str(self.ser.readline()))]
                 if s:
                     self.data.emit(s)
 
