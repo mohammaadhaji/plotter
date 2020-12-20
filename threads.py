@@ -42,7 +42,7 @@ class SerialThread(QThread):
                 msg = 'Can not open {port} port, it might be used in another program.'.format(port = self.options['port'])
                 title = 'Serial Port Error'
                 self.ser_exp.emit(msg, title)
-            elif 'OSError' in str(e):
-                msg = 'Something wrong with stopbit'
-                title = 'Cannot Configure Port'
-                self.ser_exp.emit(msg, title)
+            else:
+                pass
+        except Exception:
+            pass
