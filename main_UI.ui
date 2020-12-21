@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1581</width>
-    <height>1004</height>
+    <width>1306</width>
+    <height>1008</height>
    </rect>
   </property>
   <property name="font">
@@ -105,7 +105,7 @@ QPushButton:hover:!pressed{
 </string>
                  </property>
                  <property name="text">
-                  <string>Connect</string>
+                  <string>&amp;Connect</string>
                  </property>
                 </widget>
                </item>
@@ -831,7 +831,7 @@ QPushButton:hover:!pressed{
 </string>
                        </property>
                        <property name="text">
-                        <string>Send</string>
+                        <string>&amp;Send</string>
                        </property>
                       </widget>
                      </item>
@@ -1326,7 +1326,7 @@ QPushButton:hover:!pressed{
 </string>
                           </property>
                           <property name="text">
-                           <string>reset</string>
+                           <string>&amp;reset</string>
                           </property>
                          </widget>
                         </item>
@@ -1377,7 +1377,7 @@ QPushButton:hover:!pressed{
 </string>
                    </property>
                    <property name="text">
-                    <string>Clear Plot</string>
+                    <string>Clear &amp;Plot</string>
                    </property>
                   </widget>
                  </item>
@@ -1415,7 +1415,7 @@ Y = 0.00</string>
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1581</width>
+     <width>1306</width>
      <height>26</height>
     </rect>
    </property>

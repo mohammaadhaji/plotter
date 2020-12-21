@@ -1,5 +1,5 @@
 from PyQt5 import uic, QtGui
-from PyQt5.QtWidgets import QMessageBox, QMainWindow, QApplication, QShortcut, QPlainTextEdit
+from PyQt5.QtWidgets import QMessageBox, QMainWindow, QApplication, QShortcut, QPlainTextEdit, QAction
 from PyQt5.QtGui import QColor, QKeySequence
 from PyQt5.QtCore import Qt, QThread, pyqtSignal
 from combobox import ComboBox
@@ -32,6 +32,7 @@ class MainWindow(QMainWindow):
         self.rdb_serial.setChecked(True)
         self.rdb_ethernet.clicked.connect(self.u_maintenance)
         self.rdb_USB.clicked.connect(self.u_maintenance)
+        self.connected = False
 
         #------------------------------Some Serial Option in Dict-------------------------
         self.s_opt = {'bs5': serial.FIVEBITS, 'bs6': serial.SIXBITS, 'bs7': serial.SEVENBITS,
@@ -50,6 +51,13 @@ class MainWindow(QMainWindow):
         #-------------------------------------Shortcuts-----------------------------------
         self.auto_range_shortcut = QShortcut(QKeySequence("Ctrl+A"), self)
         self.auto_range_shortcut.activated.connect(self.auto_range)
+        self.btn_clear_plot.setShortcut('Ctrl+P')
+        self.btn_reset_y.setShortcut('Ctrl+R')
+        self.btn_send.setShortcut('Ctrl+S')
+        self.connectAction = QAction('Toggle connection', self)
+        self.connectAction.setShortcut('Ctrl+C')
+        self.connectAction.triggered.connect(self.connection)
+        self.addAction(self.connectAction)
 
         #--------------------------------Plot Initialization------------------------------
         self.lines = {'line0': [], 'line1': [], 'line2': [],
@@ -182,7 +190,8 @@ class MainWindow(QMainWindow):
             self.comb_sPort.addItem(port)
 
     def connection(self):
-        if self.btn_connection.text() == 'Connect':
+        self.connected = not self.connected
+        if self.connected:
             if self.rdb_serial.isChecked():
                 options = self.get_serial_options()
                 if options['validation'] == False:
@@ -191,7 +200,7 @@ class MainWindow(QMainWindow):
                 self.set_channels()
                 self.ser_thread.ser_exp.connect(self.notify_ser_exp)
                 self.ser_thread.start()
-                self.btn_connection.setText('Disconnect')
+                self.btn_connection.setText('Dis&connect')
                 
             elif self.rdb_ethernet.isChecked():
                 pass
@@ -201,7 +210,7 @@ class MainWindow(QMainWindow):
             if self.rdb_serial.isChecked():
                 self.ser_thread.set_ser_conn_false()
                 self.ser_thread.data.disconnect()
-                self.btn_connection.setText('Connect')
+                self.btn_connection.setText('&Connect')
             elif self.rdb_ethernet.isChecked():
                 pass
             elif self.rdb_usb.isChecked():
@@ -297,7 +306,7 @@ class MainWindow(QMainWindow):
         self.line3.setData(self.x, self.lines['line3'])
 
     def notify_ser_exp(self, msg, title):
-        self.btn_connection.setText('Connect')
+        self.btn_connection.setText('&Connect')
         Notification(
                 title=title,
                 description=msg,
