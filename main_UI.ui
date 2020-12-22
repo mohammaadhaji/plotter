@@ -881,7 +881,7 @@ QPushButton:hover:!pressed{
                    <item>
                     <widget class="QCheckBox" name="chBox_show_data">
                      <property name="text">
-                      <string>Show Sent and Received Data</string>
+                      <string>Show Sent and Received &amp;Data</string>
                      </property>
                     </widget>
                    </item>

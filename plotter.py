@@ -58,6 +58,10 @@ class MainWindow(QMainWindow):
         self.connectAction.setShortcut('Ctrl+C')
         self.connectAction.triggered.connect(self.connection)
         self.addAction(self.connectAction)
+        self.transmissionAction = QAction('Toggle Show', self)
+        self.transmissionAction.setShortcut('Ctrl+D')
+        self.transmissionAction.triggered.connect(self.show_transmission)
+        self.addAction(self.transmissionAction)
 
         #--------------------------------Plot Initialization------------------------------
         self.lines = {'line0': [], 'line1': [], 'line2': [],
@@ -97,6 +101,11 @@ class MainWindow(QMainWindow):
         self.txb_data.textChanged.connect(self.set_packet_label)
         self.btn_send.clicked.connect(self.send)
 
+    def show_transmission(self):
+        if self.chBox_show_data.isChecked():
+            self.chBox_show_data.setChecked(False)
+        else:
+            self.chBox_show_data.setChecked(True)
 
     def onMouseMoved(self, evt):        
         point =self.graphWidget.plotItem.vb.mapSceneToView(evt)
