@@ -202,8 +202,8 @@ class MainWindow(QMainWindow):
         self.connected = not self.connected
         if self.connected:
             if self.rdb_serial.isChecked():
-                options = self.get_serial_options()
-                if options['validation'] == False:
+                options, validation = self.get_serial_options()
+                if validation == False:
                     return
                 self.ser_thread.set_options(options)
                 self.set_channels()
@@ -324,10 +324,10 @@ class MainWindow(QMainWindow):
 
     def get_serial_options(self):
         options = {}
-        options['validation'] = True
+        validation = True
         port = self.comb_sPort.currentText()
         if port == '':
-            options['validation'] = False
+            validation = False
             self.message('Invalid Input...', 'There are no available ports')
         options['port'] = port
 
@@ -356,7 +356,7 @@ class MainWindow(QMainWindow):
         if timeout == '':
             timeout = None
         elif not timeout.isdigit():    
-            options['validation'] = False
+            validation = False
             self.message('Invalid Input...', 'Read timeout must be a float value.')
         else:
             timeout = float(timeout)
@@ -366,7 +366,7 @@ class MainWindow(QMainWindow):
         if write_timeout == '':
             write_timeout = None
         elif not write_timeout.isdigit():
-            options['validation'] = False
+            validation = False
             self.message('Invalid Input...', 'write timeout must be a float value.')
         else:
             write_timeout = float(write_timeout)
@@ -376,13 +376,13 @@ class MainWindow(QMainWindow):
         if inter_byte_timeout == '':
             inter_byte_timeout = None
         elif not inter_byte_timeout.isdigit():
-            options['validation'] = False
+            validation = False
             self.message('Invalid Input...', 'Inter byte timeout must be a float value.')
         else:
             inter_byte_timeout = float(inter_byte_timeout)
         options['inter_byte_timeout'] = inter_byte_timeout
 
-        return options
+        return options, validation
          
     def message(self, title, discription):
         msg = QMessageBox()

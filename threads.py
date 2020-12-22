@@ -25,10 +25,7 @@ class SerialThread(QThread):
         
     def run(self):
         try:
-            self.ser = serial.Serial(self.options['port'], self.options['baudrate'], self.options['bytesize'],
-                                     self.options['parity'], self.options['stopbits'], self.options['timeout'],
-                                     self.options['xonxoff'], self.options['rtscts'], self.options['write_timeout'],
-                                     self.options['dsrdtr'], self.options['inter_byte_timeout'])
+            self.ser = serial.Serial(**self.options)
 
             self.ser_conn = True
 
