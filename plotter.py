@@ -100,6 +100,8 @@ class MainWindow(QMainWindow):
         self.txb_footer.textChanged.connect(self.set_packet_label)
         self.txb_data.textChanged.connect(self.set_packet_label)
         self.btn_send.clicked.connect(self.send)
+        self.msg = QMessageBox()
+        self.msg.setIcon(QMessageBox.Information)
 
     def show_transmission(self):
         if self.chBox_show_data.isChecked():
@@ -110,8 +112,7 @@ class MainWindow(QMainWindow):
     def onMouseMoved(self, evt):        
         point =self.graphWidget.plotItem.vb.mapSceneToView(evt)
         self.lbl_coordinate.setText(f"X = {round(point.x(), 2)}\nY = {round(point.y(), 2)}")
-        
-        
+         
     def send(self):
         packet = self.set_packet_label().encode('utf-8')
         self.ser_thread.write(packet)
@@ -146,11 +147,9 @@ class MainWindow(QMainWindow):
         self.lbl_ch4_y.setText(str(self.inc_or_dec_ch3))
         
     def u_maintenance(self):
-        msg = QMessageBox()
-        msg.setIcon(QMessageBox.Information)
-        msg.setWindowTitle('Under Maintenance...')
-        msg.setText('This section will be available in future versions.')
-        msg.exec_()
+        title = 'Under Maintenance...'
+        msg = 'This section will be available in future versions.'
+        self.message(title, msg)
         self.rdb_serial.setChecked(True)
 
     def set_channels(self):
@@ -207,7 +206,7 @@ class MainWindow(QMainWindow):
                     return
                 self.ser_thread.set_options(options)
                 self.set_channels()
-                self.ser_thread.ser_exp.connect(self.notify_ser_exp)
+                self.ser_thread.ser_exp.connect(self.message)
                 self.ser_thread.start()
                 self.btn_connection.setText('Dis&connect')
                 
@@ -314,14 +313,6 @@ class MainWindow(QMainWindow):
         self.line2.setData(self.x, self.lines['line2'])
         self.line3.setData(self.x, self.lines['line3'])
 
-    def notify_ser_exp(self, msg, title):
-        self.btn_connection.setText('&Connect')
-        Notification(
-                title=title,
-                description=msg,
-                duration=7,
-            ).send()
-
     def get_serial_options(self):
         options = {}
         validation = True
@@ -385,11 +376,11 @@ class MainWindow(QMainWindow):
         return options, validation
          
     def message(self, title, discription):
-        msg = QMessageBox()
-        msg.setIcon(QMessageBox.Warning)
-        msg.setWindowTitle(title)
-        msg.setText(discription)
-        msg.exec_()
+        if 'Serial' in title:
+            self.btn_connection.setText('&Connect')
+        self.msg.setWindowTitle(title)
+        self.msg.setText(discription)
+        self.msg.exec_()
 
     def clear_data(self):
         self.count = 0

@@ -38,7 +38,7 @@ class SerialThread(QThread):
             if 'PermissionError' in str(e):
                 msg = 'Can not open {port} port, it might be used in another program.'.format(port = self.options['port'])
                 title = 'Serial Port Error'
-                self.ser_exp.emit(msg, title)
+                self.ser_exp.emit(title, msg)
             else:
                 pass
         except Exception:
