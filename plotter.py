@@ -64,8 +64,10 @@ class MainWindow(QMainWindow):
         self.addAction(self.transmissionAction)
 
         #--------------------------------Plot Initialization------------------------------
-        self.lines = {'line0': [], 'line1': [], 'line2': [],
-                      'line3': [], 'line4': []}
+        self.y1 = []
+        self.y2 = []
+        self.y3 = []
+        self.y4 = []
         self.x = []
         self.count = 0
         self.graphWidget = pg.PlotWidget()
@@ -74,25 +76,25 @@ class MainWindow(QMainWindow):
         self.graphWidget.scene().sigMouseMoved.connect(self.onMouseMoved)
         self.graphWidget.showGrid(x=True, y=True)
         self.graphWidget.setMouseEnabled(x=True,y=False)  
-        self.line0 = self.graphWidget.plot(self.x, self.lines['line0'], pen='b')
-        self.line1 = self.graphWidget.plot(self.x, self.lines['line1'], pen='r')
-        self.line2 = self.graphWidget.plot(self.x, self.lines['line2'], pen='g')
-        self.line3 = self.graphWidget.plot(self.x, self.lines['line3'], pen='w')
+        self.line1 = self.graphWidget.plot(self.x, self.y1, pen='b')
+        self.line2 = self.graphWidget.plot(self.x, self.y2, pen='r')
+        self.line3 = self.graphWidget.plot(self.x, self.y3, pen='g')
+        self.line4 = self.graphWidget.plot(self.x, self.y4, pen='w')
         
         #-----------------------------------Plot Settings---------------------------------
-        self.dial_ch1.valueChanged.connect(self.set_ch0_y)
-        self.dial_ch2.valueChanged.connect(self.set_ch1_y)
-        self.dial_ch3.valueChanged.connect(self.set_ch2_y)
-        self.dial_ch4.valueChanged.connect(self.set_ch3_y)
+        self.dial_ch1.valueChanged.connect(self.set_ch1_y)
+        self.dial_ch2.valueChanged.connect(self.set_ch2_y)
+        self.dial_ch3.valueChanged.connect(self.set_ch3_y)
+        self.dial_ch4.valueChanged.connect(self.set_ch4_y)
         self.btn_reset_y.clicked.connect(self.reset_y)
         self.btn_clear_plot.clicked.connect(self.clear_data)
         self.spinBox_points.valueChanged.connect(self.set_points)
         self.comb_channels.currentTextChanged.connect(self.set_channels)
         self.points = self.spinBox_points.value()
-        self.inc_or_dec_ch0 = 0
         self.inc_or_dec_ch1 = 0
         self.inc_or_dec_ch2 = 0
         self.inc_or_dec_ch3 = 0
+        self.inc_or_dec_ch4 = 0
 
         self.btn_connection.clicked.connect(self.connection)
         self.header = self.txb_header.text()
@@ -130,21 +132,21 @@ class MainWindow(QMainWindow):
         self.dial_ch3.setValue(0)
         self.dial_ch4.setValue(0)
 
-    def set_ch0_y(self):
-        self.inc_or_dec_ch0 = self.dial_ch1.value()
-        self.lbl_ch1_y.setText(str(self.inc_or_dec_ch0))
-
     def set_ch1_y(self):
-        self.inc_or_dec_ch1 = self.dial_ch2.value()
-        self.lbl_ch2_y.setText(str(self.inc_or_dec_ch1))
+        self.inc_or_dec_ch1 = self.dial_ch1.value()
+        self.lbl_ch1_y.setText(str(self.inc_or_dec_ch1))
 
     def set_ch2_y(self):
-        self.inc_or_dec_ch2 = self.dial_ch3.value()
-        self.lbl_ch3_y.setText(str(self.inc_or_dec_ch2))
+        self.inc_or_dec_ch2 = self.dial_ch2.value()
+        self.lbl_ch2_y.setText(str(self.inc_or_dec_ch2))
 
     def set_ch3_y(self):
-        self.inc_or_dec_ch3 = self.dial_ch4.value()
-        self.lbl_ch4_y.setText(str(self.inc_or_dec_ch3))
+        self.inc_or_dec_ch3 = self.dial_ch3.value()
+        self.lbl_ch3_y.setText(str(self.inc_or_dec_ch3))
+
+    def set_ch4_y(self):
+        self.inc_or_dec_ch4 = self.dial_ch4.value()
+        self.lbl_ch4_y.setText(str(self.inc_or_dec_ch4))
         
     def u_maintenance(self):
         title = 'Under Maintenance...'
@@ -161,13 +163,13 @@ class MainWindow(QMainWindow):
         self.ser_thread.data.connect(self.read)
         channels = self.comb_channels.currentText()
         if channels == '1':
-            self.ser_thread.data.connect(self.plot_ch0)
-        elif channels == '2':
             self.ser_thread.data.connect(self.plot_ch1)
-        elif channels == '3':
+        elif channels == '2':
             self.ser_thread.data.connect(self.plot_ch2)
-        elif channels == '4':
+        elif channels == '3':
             self.ser_thread.data.connect(self.plot_ch3)
+        elif channels == '4':
+            self.ser_thread.data.connect(self.plot_ch4)
     
     def set_points(self):
         self.points = self.spinBox_points.value()
@@ -235,22 +237,8 @@ class MainWindow(QMainWindow):
             data = f'<p style="color:green;font-size: 16px;">[ S ]> {data}</p>'
             self.ptxtEdit_log.appendHtml(data)
 
-    def plot_ch0(self, data):   
-        self.lines['line0'].append(data[0] + (self.inc_or_dec_ch0))
-        
-        self.x.append(self.count)
-        self.count += 1
-
-        if len(self.x) > self.points:
-            m = len(self.x) - self.points
-            self.x = self.x[m:]
-            self.lines['line0'] = self.lines['line0'][m:]
-
-        self.line0.setData(self.x, self.lines['line0'])
-
     def plot_ch1(self, data):   
-        self.lines['line0'].append(data[0] + (self.inc_or_dec_ch0))
-        self.lines['line1'].append(data[1] + (self.inc_or_dec_ch1))
+        self.y1.append(data[0] + (self.inc_or_dec_ch1))
         
         self.x.append(self.count)
         self.count += 1
@@ -258,16 +246,13 @@ class MainWindow(QMainWindow):
         if len(self.x) > self.points:
             m = len(self.x) - self.points
             self.x = self.x[m:]
-            self.lines['line0'] = self.lines['line0'][m:]
-            self.lines['line1'] = self.lines['line1'][m:]
+            self.y1 = self.y1[m:]
 
-        self.line0.setData(self.x, self.lines['line0'])
-        self.line1.setData(self.x, self.lines['line1'])
+        self.line1.setData(self.x, self.y1)
 
     def plot_ch2(self, data):   
-        self.lines['line0'].append(data[0] + (self.inc_or_dec_ch0))
-        self.lines['line1'].append(data[1] + (self.inc_or_dec_ch1))
-        self.lines['line2'].append(data[2] + (self.inc_or_dec_ch2))
+        self.y1.append(data[0] + (self.inc_or_dec_ch1))
+        self.y2.append(data[1] + (self.inc_or_dec_ch2))
         
         self.x.append(self.count)
         self.count += 1
@@ -275,19 +260,16 @@ class MainWindow(QMainWindow):
         if len(self.x) > self.points:
             m = len(self.x) - self.points
             self.x = self.x[m:]
-            self.lines['line0'] = self.lines['line0'][m:]
-            self.lines['line1'] = self.lines['line1'][m:]
-            self.lines['line2'] = self.lines['line2'][m:]
+            self.y1 = self.y1[m:]
+            self.y2 = self.y2[m:]
 
-        self.line0.setData(self.x, self.lines['line0'])
-        self.line1.setData(self.x, self.lines['line1'])
-        self.line2.setData(self.x, self.lines['line2'])
+        self.line1.setData(self.x, self.y1)
+        self.line2.setData(self.x, self.y2)
 
     def plot_ch3(self, data):   
-        self.lines['line0'].append(data[0] + (self.inc_or_dec_ch0))
-        self.lines['line1'].append(data[1] + (self.inc_or_dec_ch1))
-        self.lines['line2'].append(data[2] + (self.inc_or_dec_ch2))
-        self.lines['line3'].append(data[3] + (self.inc_or_dec_ch3))
+        self.y1.append(data[0] + (self.inc_or_dec_ch1))
+        self.y2.append(data[1] + (self.inc_or_dec_ch2))
+        self.y3.append(data[2] + (self.inc_or_dec_ch3))
         
         self.x.append(self.count)
         self.count += 1
@@ -295,15 +277,35 @@ class MainWindow(QMainWindow):
         if len(self.x) > self.points:
             m = len(self.x) - self.points
             self.x = self.x[m:]
-            self.lines['line0'] = self.lines['line0'][m:]
-            self.lines['line1'] = self.lines['line1'][m:]
-            self.lines['line2'] = self.lines['line2'][m:]
-            self.lines['line3'] = self.lines['line3'][m:]
+            self.y1 = self.y1[m:]
+            self.y2 = self.y2[m:]
+            self.y3 = self.y3[m:]
 
-        self.line0.setData(self.x, self.lines['line0'])
-        self.line1.setData(self.x, self.lines['line1'])
-        self.line2.setData(self.x, self.lines['line2'])
-        self.line3.setData(self.x, self.lines['line3'])
+        self.line1.setData(self.x, self.y1)
+        self.line2.setData(self.x, self.y2)
+        self.line3.setData(self.x, self.y3)
+
+    def plot_ch4(self, data):   
+        self.y1.append(data[0] + (self.inc_or_dec_ch1))
+        self.y2.append(data[1] + (self.inc_or_dec_ch2))
+        self.y3.append(data[2] + (self.inc_or_dec_ch3))
+        self.y4.append(data[3] + (self.inc_or_dec_ch4))
+        
+        self.x.append(self.count)
+        self.count += 1
+
+        if len(self.x) > self.points:
+            m = len(self.x) - self.points
+            self.x = self.x[m:]
+            self.y1 = self.y1[m:]
+            self.y2 = self.y2[m:]
+            self.y3 = self.y3[m:]
+            self.y4 = self.y4[m:]
+
+        self.line1.setData(self.x, self.y1)
+        self.line2.setData(self.x, self.y2)
+        self.line3.setData(self.x, self.y3)
+        self.line4.setData(self.x, self.y4)
 
     def get_serial_options(self):
         options = {}
@@ -377,14 +379,16 @@ class MainWindow(QMainWindow):
     def clear_data(self):
         self.count = 0
         self.x.clear()
-        for i in self.lines:
-            self.lines[i].clear()
+        self.y1.clear()
+        self.y2.clear()
+        self.y3.clear()
+        self.y4.clear()
 
         self.auto_range()
-        self.line0.setData(self.x, self.lines['line0'])
-        self.line1.setData(self.x, self.lines['line1'])
-        self.line2.setData(self.x, self.lines['line2'])
-        self.line3.setData(self.x, self.lines['line3'])
+        self.line1.setData(self.x, self.y1)
+        self.line2.setData(self.x, self.y2)
+        self.line3.setData(self.x, self.y3)
+        self.line4.setData(self.x, self.y4)
         self.ptxtEdit_log.clear()
         
             
