@@ -31,8 +31,7 @@ class SerialThread(QThread):
 
             while self.ser_conn: 
                 s = [float(i) for i in re.findall('[-\d.]+', str(self.ser.readline()))]
-                if s:
-                    self.data.emit(s)
+                self.data.emit(s)
 
         except serial.SerialException as e:
             if 'PermissionError' in str(e):
