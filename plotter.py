@@ -158,6 +158,7 @@ class MainWindow(QMainWindow):
             self.clear_data()
         except Exception:
             pass
+        self.ser_thread.data.connect(self.read)
         channels = self.comb_channels.currentText()
         if channels == '1':
             self.ser_thread.data.connect(self.plot_ch0)
@@ -226,7 +227,7 @@ class MainWindow(QMainWindow):
 
     def read(self, data):
         if self.chBox_show_data.isChecked():
-            data = f'<p style="font-size: 16px;">[ R ]> {data[1:-1]}</p>'
+            data = f'<p style="font-size: 16px;">[ R ]> {str(data)[1:-1]}</p>'
             self.ptxtEdit_log.appendHtml(data)
     
     def write(self, data):
@@ -245,8 +246,6 @@ class MainWindow(QMainWindow):
             self.x = self.x[m:]
             self.lines['line0'] = self.lines['line0'][m:]
 
-        self.read(str(data))
-
         self.line0.setData(self.x, self.lines['line0'])
 
     def plot_ch1(self, data):   
@@ -261,8 +260,6 @@ class MainWindow(QMainWindow):
             self.x = self.x[m:]
             self.lines['line0'] = self.lines['line0'][m:]
             self.lines['line1'] = self.lines['line1'][m:]
-
-        self.read(str(data))
 
         self.line0.setData(self.x, self.lines['line0'])
         self.line1.setData(self.x, self.lines['line1'])
@@ -281,9 +278,6 @@ class MainWindow(QMainWindow):
             self.lines['line0'] = self.lines['line0'][m:]
             self.lines['line1'] = self.lines['line1'][m:]
             self.lines['line2'] = self.lines['line2'][m:]
-
-        if self.chBox_show_data.isChecked():
-            self.read(str(data))
 
         self.line0.setData(self.x, self.lines['line0'])
         self.line1.setData(self.x, self.lines['line1'])
@@ -305,8 +299,6 @@ class MainWindow(QMainWindow):
             self.lines['line1'] = self.lines['line1'][m:]
             self.lines['line2'] = self.lines['line2'][m:]
             self.lines['line3'] = self.lines['line3'][m:]
-
-        self.read(str(data))
 
         self.line0.setData(self.x, self.lines['line0'])
         self.line1.setData(self.x, self.lines['line1'])
