@@ -13,6 +13,7 @@ import time
 import threading
 from pynotifier import Notification
 import glob
+import re
 #----------------------------------Get Files Path-------------------------------
 UI_file_name = 'main_UI.ui'
 current_file_dir = pathlib.Path(__file__).parent.absolute()
@@ -116,13 +117,16 @@ class MainWindow(QMainWindow):
         self.lbl_coordinate.setText(f"X = {round(point.x(), 2)}\nY = {round(point.y(), 2)}")
          
     def send(self):
-        packet = self.set_packet_label().encode('utf-8')
-        self.ser_thread.write(packet)
-        if packet:
-            self.write(str(packet))
+        packet = self.set_packet_label()
+        if re.search('[^0-9ABCDEFx]',packet):
+            self.message('Invalid input...', 'The packet is not valid.')
+            return
+        self.ser_thread.write(packet.encode('utf-8'))
+        self.write(packet)
 
     def set_packet_label(self):
         packet = self.txb_header.text().upper() + self.txb_data.text().upper() + self.txb_footer.text().upper()
+        packet = packet.replace('X', 'x')
         self.lbl_packet.setText(f"Packet to Send : {packet}")
         return packet
 
@@ -245,8 +249,8 @@ class MainWindow(QMainWindow):
 
         if len(self.x) > self.points:
             m = len(self.x) - self.points
-            self.x = self.x[m:]
-            self.y1 = self.y1[m:]
+            del self.x[:m]
+            del self.y1[:m]
 
         self.line1.setData(self.x, self.y1)
 
@@ -259,9 +263,9 @@ class MainWindow(QMainWindow):
 
         if len(self.x) > self.points:
             m = len(self.x) - self.points
-            self.x = self.x[m:]
-            self.y1 = self.y1[m:]
-            self.y2 = self.y2[m:]
+            del self.x[:m]
+            del self.y1[:m]
+            del self.y2[:m]
 
         self.line1.setData(self.x, self.y1)
         self.line2.setData(self.x, self.y2)
@@ -276,10 +280,10 @@ class MainWindow(QMainWindow):
 
         if len(self.x) > self.points:
             m = len(self.x) - self.points
-            self.x = self.x[m:]
-            self.y1 = self.y1[m:]
-            self.y2 = self.y2[m:]
-            self.y3 = self.y3[m:]
+            del self.x[:m]
+            del self.y1[:m]
+            del self.y2[:m]
+            del self.y3[:m]
 
         self.line1.setData(self.x, self.y1)
         self.line2.setData(self.x, self.y2)
@@ -296,11 +300,11 @@ class MainWindow(QMainWindow):
 
         if len(self.x) > self.points:
             m = len(self.x) - self.points
-            self.x = self.x[m:]
-            self.y1 = self.y1[m:]
-            self.y2 = self.y2[m:]
-            self.y3 = self.y3[m:]
-            self.y4 = self.y4[m:]
+            del self.x[:m]
+            del self.y1[:m]
+            del self.y2[:m]
+            del self.y3[:m]
+            del self.y4[:m]
 
         self.line1.setData(self.x, self.y1)
         self.line2.setData(self.x, self.y2)
